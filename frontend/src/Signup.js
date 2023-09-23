@@ -10,7 +10,8 @@ function Signup() {
         name: "",
         email: "",
         password: "",
-        description: ""
+        title: [],
+        description: []
     })
 
     const navigate = useNavigate();

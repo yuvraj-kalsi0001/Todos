@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./myComponents/Header.js";
 import { About } from "./myComponents/About.js";
+import React, { useState } from "react";
 import Login from "./Login.js";
 import Signup from "./Signup.js";
 import Home from "./Home";

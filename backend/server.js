@@ -19,6 +19,22 @@ app.post('/signup', (req, res) =>{
         req.body.name,
         req.body.email,
         req.body.password,
+        req.body.title,
+        req.body.description,
+    ]
+    db.query(sql,[values], (err, data) =>{
+        if (err){
+            return res.json("ERROR");
+
+        }
+        return res.json(data);
+    })
+})
+
+app.post('/create', (req, res) =>{
+    const sql = "INSERT INTO login_info (`name`,`email`,`password`,`description`) VALUES (?)";
+    const values = [
+        req.body.title,
         req.body.description
     ]
     db.query(sql,[values], (err, data) =>{
@@ -43,14 +59,11 @@ app.post('/login', (req, res) =>{
         //     return res.json("Success")
         // }
         if (data.length > 0) {
-            // Successful login, return user data
-            const userData = {
-                id: data[0].id,
-                name: data[0].name,
-                email: data[0].email,
-                description: data[0].description
-            };
-            return res.json(["Success",userData]);
+            const values = [
+                data.title,
+        data.description
+            ];
+            return res.json(["Success", values]);
         } else {
             return res.json("Fail");
         }

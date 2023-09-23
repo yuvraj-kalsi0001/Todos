@@ -11,6 +11,7 @@ function Home() {
         axios.get('http://localhost:8081/home')
             .then(res => setTodos(res.data))
             .catch(err => console.log(err));
+            
     }, [])
 
     return (
@@ -28,6 +29,7 @@ function Home() {
                     <tbody>
                         {
                             todos.map((data, i) => (
+                                
                                 <tr key = {i}>
                                     <td>{data.title}</td>
                                     <td>{data.description}</td>
